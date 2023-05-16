@@ -1,0 +1,179 @@
+wandb: Currently logged in as: gaoxiaoce0428. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in /home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/wandb/run-20230509_023519-hn9aezyd
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run cerulean-planet-14
+wandb: ⭐️ View project at https://wandb.ai/gaoxiaoce0428/chatGLM_6b
+wandb: 🚀 View run at https://wandb.ai/gaoxiaoce0428/chatGLM_6b/runs/hn9aezyd
+05/09/2023 02:35:23 - WARNING - __main__ - Process rank: -1, device: cuda:0, n_gpu: 2distributed training: False, 16-bits training: False
+05/09/2023 02:35:23 - INFO - __main__ - Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=2,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+do_eval=False,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'fsdp_min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+generation_max_length=None,
+generation_num_beams=None,
+gradient_accumulation_steps=16,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.02,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=-1,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=output/adgen-chatglm-6b-pt-256-2e-2/runs/May09_02-35-23_powerleader,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=10,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=3000,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=adamw_hf,
+optim_args=None,
+output_dir=output/adgen-chatglm-6b-pt-256-2e-2,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=1,
+per_device_train_batch_size=64,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['wandb'],
+resume_from_checkpoint=None,
+run_name=output/adgen-chatglm-6b-pt-256-2e-2,
+save_on_each_node=False,
+save_steps=1000,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+05/09/2023 02:35:24 - WARNING - datasets.builder - Found cached dataset json (/home/tricorder/yang/datasets/json/default-03d7023723836708/0.0.0/e347ab1c932092252e717ff3f949105a4dd28b27e842dd53157d2f72e276c2e4)
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [00:00<00:00, 505.46it/s]
+[INFO|configuration_utils.py:668] 2023-05-09 02:35:25,606 >> loading configuration file config.json from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/4d0fc39a58dcb747ab74ab2c4587bd66dcfa7e74/config.json
+[WARNING|configuration_auto.py:905] 2023-05-09 02:35:25,607 >> Explicitly passing a `revision` is encouraged when loading a configuration with custom code to ensure no malicious code has been contributed in a newer revision.
+[INFO|configuration_utils.py:668] 2023-05-09 02:35:26,839 >> loading configuration file config.json from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/4d0fc39a58dcb747ab74ab2c4587bd66dcfa7e74/config.json
+[INFO|configuration_utils.py:720] 2023-05-09 02:35:26,842 >> Model config ChatGLMConfig {
+  "_name_or_path": "THUDM/chatglm-6b",
+  "architectures": [
+    "ChatGLMModel"
+  ],
+  "auto_map": {
+    "AutoConfig": "configuration_chatglm.ChatGLMConfig",
+    "AutoModel": "modeling_chatglm.ChatGLMForConditionalGeneration",
+    "AutoModelForSeq2SeqLM": "modeling_chatglm.ChatGLMForConditionalGeneration"
+  },
+  "bos_token_id": 130004,
+  "eos_token_id": 130005,
+  "gmask_token_id": 130001,
+  "hidden_size": 4096,
+  "inner_hidden_size": 16384,
+  "layernorm_epsilon": 1e-05,
+  "mask_token_id": 130000,
+  "max_sequence_length": 2048,
+  "model_type": "chatglm",
+  "num_attention_heads": 32,
+  "num_layers": 28,
+  "pad_token_id": 3,
+  "position_encoding_2d": true,
+  "pre_seq_len": null,
+  "prefix_projection": false,
+  "quantization_bit": 0,
+  "torch_dtype": "float16",
+  "transformers_version": "4.27.1",
+  "use_cache": true,
+  "vocab_size": 130528
+}
+
+[WARNING|tokenization_auto.py:652] 2023-05-09 02:35:27,187 >> Explicitly passing a `revision` is encouraged when loading a model with custom code to ensure no malicious code has been contributed in a newer revision.
+Downloading (…)enization_chatglm.py:   0%|          | 0.00/17.0k [00:00<?, ?B/s]Downloading (…)enization_chatglm.py: 100%|██████████| 17.0k/17.0k [00:00<00:00, 3.04MB/s]
+[INFO|tokenization_utils_base.py:1802] 2023-05-09 02:35:29,363 >> loading file ice_text.model from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/4d0fc39a58dcb747ab74ab2c4587bd66dcfa7e74/ice_text.model
+[INFO|tokenization_utils_base.py:1802] 2023-05-09 02:35:29,364 >> loading file added_tokens.json from cache at None
+[INFO|tokenization_utils_base.py:1802] 2023-05-09 02:35:29,364 >> loading file special_tokens_map.json from cache at None
+[INFO|tokenization_utils_base.py:1802] 2023-05-09 02:35:29,364 >> loading file tokenizer_config.json from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/4d0fc39a58dcb747ab74ab2c4587bd66dcfa7e74/tokenizer_config.json
+[WARNING|auto_factory.py:456] 2023-05-09 02:35:29,605 >> Explicitly passing a `revision` is encouraged when loading a model with custom code to ensure no malicious code has been contributed in a newer revision.
+[INFO|modeling_utils.py:2403] 2023-05-09 02:35:32,706 >> loading weights file pytorch_model.bin from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/4d0fc39a58dcb747ab74ab2c4587bd66dcfa7e74/pytorch_model.bin.index.json
+Downloading shards:   0%|          | 0/8 [00:00<?, ?it/s]Downloading shards:  12%|█▎        | 1/8 [00:00<00:02,  2.93it/s]Downloading shards:  25%|██▌       | 2/8 [00:00<00:02,  2.90it/s]Downloading shards:  38%|███▊      | 3/8 [00:01<00:01,  2.91it/s]Downloading shards:  50%|█████     | 4/8 [00:01<00:01,  2.91it/s]Downloading shards:  62%|██████▎   | 5/8 [00:01<00:01,  2.92it/s]Downloading shards:  75%|███████▌  | 6/8 [00:02<00:00,  2.92it/s]Downloading shards:  88%|████████▊ | 7/8 [00:02<00:00,  2.90it/s]Downloading shards: 100%|██████████| 8/8 [00:02<00:00,  2.91it/s]Downloading shards: 100%|██████████| 8/8 [00:02<00:00,  2.91it/s]
+[INFO|configuration_utils.py:575] 2023-05-09 02:35:35,459 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "bos_token_id": 130004,
+  "eos_token_id": 130005,
+  "pad_token_id": 3,
+  "transformers_version": "4.27.1"
+}
+
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:01<00:09,  1.29s/it]Loading checkpoint shards:  25%|██▌       | 2/8 [00:02<00:07,  1.32s/it]Loading checkpoint shards:  38%|███▊      | 3/8 [00:03<00:06,  1.34s/it]Loading checkpoint shards:  50%|█████     | 4/8 [00:05<00:05,  1.30s/it]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:06<00:03,  1.26s/it]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:07<00:02,  1.25s/it]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:08<00:01,  1.08s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:09<00:00,  1.03it/s]Loading checkpoint shards: 100%|██████████| 8/8 [00:09<00:00,  1.14s/it]
+[INFO|modeling_utils.py:3032] 2023-05-09 02:35:45,208 >> All model checkpoint weights were used when initializing ChatGLMForConditionalGeneration.
+
+[WARNING|modeling_utils.py:3034] 2023-05-09 02:35:45,208 >> Some weights of ChatGLMForConditionalGeneration were not initialized from the model checkpoint at THUDM/chatglm-6b and are newly initialized: ['transformer.prefix_encoder.embedding.weight']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+[INFO|modeling_utils.py:2690] 2023-05-09 02:35:45,587 >> Generation config file not found, using a generation config created from the model config.

@@ -1,0 +1,543 @@
+[2023-05-15 11:28:45,336] [WARNING] [runner.py:191:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2023-05-15 11:28:45,355] [INFO] [runner.py:541:main] cmd = /home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/bin/python -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMCwgMV19 --master_addr=127.0.0.1 --master_port=17964 --enable_each_rank_log=None main_wandb.py --deepspeed deepspeed.json --do_train --train_file AdvertiseGen/train.json --test_file AdvertiseGen/dev.json --prompt_column content --response_column summary --overwrite_cache --model_name_or_path THUDM/chatglm-6b --output_dir ./output/adgen-chatglm-6b-ft-1e-4-wandb --overwrite_output_dir --max_source_length 16 --max_target_length 16 --per_device_train_batch_size 1 --per_device_eval_batch_size 1 --gradient_accumulation_steps 1 --predict_with_generate --max_steps 3000 --logging_steps 10 --save_steps 1000 --learning_rate 1e-4 --fp16
+[2023-05-15 11:28:47,550] [INFO] [launch.py:229:main] WORLD INFO DICT: {'localhost': [0, 1]}
+[2023-05-15 11:28:47,550] [INFO] [launch.py:235:main] nnodes=1, num_local_procs=2, node_rank=0
+[2023-05-15 11:28:47,550] [INFO] [launch.py:246:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1]})
+[2023-05-15 11:28:47,550] [INFO] [launch.py:247:main] dist_world_size=2
+[2023-05-15 11:28:47,550] [INFO] [launch.py:249:main] Setting CUDA_VISIBLE_DEVICES=0,1
+wandb: Currently logged in as: xiaoce-gao (nascentcore). Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: xiaoce-gao (nascentcore). Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in /home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/wandb/run-20230515_112852-v2ffgfxn
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run super-elevator-19
+wandb: ⭐️ View project at https://wandb.ai/nascentcore/chatGLM_6b
+wandb: 🚀 View run at https://wandb.ai/nascentcore/chatGLM_6b/runs/v2ffgfxn
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in /home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/wandb/run-20230515_112852-24r83cmr
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run pious-field-20
+wandb: ⭐️ View project at https://wandb.ai/nascentcore/chatGLM_6b
+wandb: 🚀 View run at https://wandb.ai/nascentcore/chatGLM_6b/runs/24r83cmr
+[2023-05-15 11:28:59,459] [INFO] [comm.py:622:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+05/15/2023 11:29:00 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: True
+05/15/2023 11:29:00 - INFO - __main__ - Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=deepspeed.json,
+disable_tqdm=False,
+do_eval=False,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=True,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'fsdp_min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+generation_max_length=None,
+generation_num_beams=None,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.0001,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=./output/adgen-chatglm-6b-ft-1e-4-wandb/runs/May15_11-28-59_powerleader,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=10,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=3000,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=adamw_hf,
+optim_args=None,
+output_dir=./output/adgen-chatglm-6b-ft-1e-4-wandb,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=1,
+per_device_train_batch_size=1,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['wandb'],
+resume_from_checkpoint=None,
+run_name=./output/adgen-chatglm-6b-ft-1e-4-wandb,
+save_on_each_node=False,
+save_steps=1000,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+05/15/2023 11:29:00 - WARNING - __main__ - Process rank: 1, device: cuda:1, n_gpu: 1distributed training: True, 16-bits training: True
+05/15/2023 11:29:01 - WARNING - datasets.builder - Found cached dataset json (/home/tricorder/yang/datasets/json/default-893099228a2d8f98/0.0.0/e347ab1c932092252e717ff3f949105a4dd28b27e842dd53157d2f72e276c2e4)
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [00:00<00:00, 496.48it/s]
+05/15/2023 11:29:01 - WARNING - datasets.builder - Found cached dataset json (/home/tricorder/yang/datasets/json/default-893099228a2d8f98/0.0.0/e347ab1c932092252e717ff3f949105a4dd28b27e842dd53157d2f72e276c2e4)
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [00:00<00:00, 451.39it/s]
+[INFO|configuration_utils.py:668] 2023-05-15 11:29:02,284 >> loading configuration file config.json from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/a10da4c68b5d616030d3531fc37a13bb44ea814d/config.json
+[WARNING|configuration_auto.py:905] 2023-05-15 11:29:02,284 >> Explicitly passing a `revision` is encouraged when loading a configuration with custom code to ensure no malicious code has been contributed in a newer revision.
+[WARNING|configuration_auto.py:905] 2023-05-15 11:29:02,297 >> Explicitly passing a `revision` is encouraged when loading a configuration with custom code to ensure no malicious code has been contributed in a newer revision.
+[INFO|configuration_utils.py:668] 2023-05-15 11:29:03,452 >> loading configuration file config.json from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/a10da4c68b5d616030d3531fc37a13bb44ea814d/config.json
+[INFO|configuration_utils.py:720] 2023-05-15 11:29:03,454 >> Model config ChatGLMConfig {
+  "_name_or_path": "THUDM/chatglm-6b",
+  "architectures": [
+    "ChatGLMModel"
+  ],
+  "auto_map": {
+    "AutoConfig": "configuration_chatglm.ChatGLMConfig",
+    "AutoModel": "modeling_chatglm.ChatGLMForConditionalGeneration",
+    "AutoModelForSeq2SeqLM": "modeling_chatglm.ChatGLMForConditionalGeneration"
+  },
+  "bos_token_id": 130004,
+  "eos_token_id": 130005,
+  "gmask_token_id": 130001,
+  "hidden_size": 4096,
+  "inner_hidden_size": 16384,
+  "layernorm_epsilon": 1e-05,
+  "mask_token_id": 130000,
+  "max_sequence_length": 2048,
+  "model_type": "chatglm",
+  "num_attention_heads": 32,
+  "num_layers": 28,
+  "pad_token_id": 3,
+  "position_encoding_2d": true,
+  "pre_seq_len": null,
+  "prefix_projection": false,
+  "quantization_bit": 0,
+  "torch_dtype": "float16",
+  "transformers_version": "4.27.1",
+  "use_cache": true,
+  "vocab_size": 130528
+}
+
+[WARNING|tokenization_auto.py:652] 2023-05-15 11:29:03,761 >> Explicitly passing a `revision` is encouraged when loading a model with custom code to ensure no malicious code has been contributed in a newer revision.
+[WARNING|tokenization_auto.py:652] 2023-05-15 11:29:03,796 >> Explicitly passing a `revision` is encouraged when loading a model with custom code to ensure no malicious code has been contributed in a newer revision.
+[INFO|tokenization_utils_base.py:1802] 2023-05-15 11:29:04,563 >> loading file ice_text.model from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/a10da4c68b5d616030d3531fc37a13bb44ea814d/ice_text.model
+[INFO|tokenization_utils_base.py:1802] 2023-05-15 11:29:04,564 >> loading file added_tokens.json from cache at None
+[INFO|tokenization_utils_base.py:1802] 2023-05-15 11:29:04,564 >> loading file special_tokens_map.json from cache at None
+[INFO|tokenization_utils_base.py:1802] 2023-05-15 11:29:04,565 >> loading file tokenizer_config.json from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/a10da4c68b5d616030d3531fc37a13bb44ea814d/tokenizer_config.json
+[WARNING|auto_factory.py:456] 2023-05-15 11:29:04,785 >> Explicitly passing a `revision` is encouraged when loading a model with custom code to ensure no malicious code has been contributed in a newer revision.
+[WARNING|auto_factory.py:456] 2023-05-15 11:29:04,812 >> Explicitly passing a `revision` is encouraged when loading a model with custom code to ensure no malicious code has been contributed in a newer revision.
+[INFO|modeling_utils.py:2403] 2023-05-15 11:29:07,205 >> loading weights file pytorch_model.bin from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/a10da4c68b5d616030d3531fc37a13bb44ea814d/pytorch_model.bin.index.json
+[INFO|configuration_utils.py:575] 2023-05-15 11:29:07,206 >> Generate config GenerationConfig {
+  "_from_model_config": true,
+  "bos_token_id": 130004,
+  "eos_token_id": 130005,
+  "pad_token_id": 3,
+  "transformers_version": "4.27.1"
+}
+
+Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:   0%|          | 0/8 [00:00<?, ?it/s]Loading checkpoint shards:  12%|█▎        | 1/8 [00:01<00:09,  1.32s/it]Loading checkpoint shards:  12%|█▎        | 1/8 [00:01<00:09,  1.38s/it]Loading checkpoint shards:  25%|██▌       | 2/8 [00:02<00:08,  1.38s/it]Loading checkpoint shards:  25%|██▌       | 2/8 [00:02<00:08,  1.42s/it]Loading checkpoint shards:  38%|███▊      | 3/8 [00:04<00:07,  1.43s/it]Loading checkpoint shards:  38%|███▊      | 3/8 [00:04<00:07,  1.47s/it]Loading checkpoint shards:  50%|█████     | 4/8 [00:05<00:05,  1.41s/it]Loading checkpoint shards:  50%|█████     | 4/8 [00:05<00:05,  1.43s/it]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:06<00:04,  1.39s/it]Loading checkpoint shards:  62%|██████▎   | 5/8 [00:07<00:04,  1.42s/it]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:08<00:02,  1.34s/it]Loading checkpoint shards:  75%|███████▌  | 6/8 [00:08<00:02,  1.40s/it]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:08<00:01,  1.15s/it]Loading checkpoint shards:  88%|████████▊ | 7/8 [00:09<00:01,  1.22s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:09<00:00,  1.04s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:09<00:00,  1.22s/it]
+[INFO|modeling_utils.py:3032] 2023-05-15 11:29:17,096 >> All model checkpoint weights were used when initializing ChatGLMForConditionalGeneration.
+
+[INFO|modeling_utils.py:3040] 2023-05-15 11:29:17,097 >> All the weights of ChatGLMForConditionalGeneration were initialized from the model checkpoint at THUDM/chatglm-6b.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use ChatGLMForConditionalGeneration for predictions without further training.
+[INFO|modeling_utils.py:2690] 2023-05-15 11:29:17,499 >> Generation config file not found, using a generation config created from the model config.
+Loading checkpoint shards: 100%|██████████| 8/8 [00:10<00:00,  1.13s/it]Loading checkpoint shards: 100%|██████████| 8/8 [00:10<00:00,  1.28s/it]
+Running tokenizer on train dataset:   0%|          | 0/114599 [00:00<?, ? examples/s]Running tokenizer on train dataset:   1%|          | 1000/114599 [00:00<01:19, 1431.09 examples/s]Running tokenizer on train dataset:   2%|▏         | 2000/114599 [00:01<01:10, 1596.35 examples/s]Running tokenizer on train dataset:   3%|▎         | 3000/114599 [00:01<01:08, 1637.75 examples/s]Running tokenizer on train dataset:   3%|▎         | 4000/114599 [00:02<01:06, 1669.96 examples/s]Running tokenizer on train dataset:   4%|▍         | 5000/114599 [00:03<01:05, 1685.56 examples/s]Running tokenizer on train dataset:   5%|▌         | 6000/114599 [00:03<01:04, 1681.65 examples/s]Running tokenizer on train dataset:   6%|▌         | 7000/114599 [00:04<01:03, 1690.16 examples/s]Running tokenizer on train dataset:   7%|▋         | 8000/114599 [00:04<01:02, 1700.88 examples/s]Running tokenizer on train dataset:   8%|▊         | 9000/114599 [00:05<01:01, 1704.23 examples/s]Running tokenizer on train dataset:   9%|▊         | 10000/114599 [00:05<00:59, 1748.08 examples/s]Running tokenizer on train dataset:  10%|▉         | 11000/114599 [00:06<00:56, 1842.85 examples/s]Running tokenizer on train dataset:  10%|█         | 12000/114599 [00:06<00:53, 1905.82 examples/s]Running tokenizer on train dataset:  11%|█▏        | 13000/114599 [00:07<00:51, 1959.14 examples/s]Running tokenizer on train dataset:  12%|█▏        | 14000/114599 [00:07<00:50, 1993.20 examples/s]Running tokenizer on train dataset:  13%|█▎        | 15000/114599 [00:08<00:49, 2018.19 examples/s]Running tokenizer on train dataset:  14%|█▍        | 16000/114599 [00:08<00:48, 2040.66 examples/s]Running tokenizer on train dataset:  15%|█▍        | 17000/114599 [00:09<00:47, 2054.96 examples/s]Running tokenizer on train dataset:  16%|█▌        | 18000/114599 [00:09<00:46, 2062.68 examples/s]Running tokenizer on train dataset:  17%|█▋        | 19000/114599 [00:10<00:46, 2073.81 examples/s]Running tokenizer on train dataset:  17%|█▋        | 20000/114599 [00:10<00:45, 2082.00 examples/s]Running tokenizer on train dataset:  18%|█▊        | 21000/114599 [00:11<00:44, 2087.99 examples/s]Running tokenizer on train dataset:  19%|█▉        | 22000/114599 [00:11<00:44, 2083.77 examples/s]Running tokenizer on train dataset:  20%|██        | 23000/114599 [00:12<00:43, 2087.59 examples/s]Running tokenizer on train dataset:  21%|██        | 24000/114599 [00:12<00:43, 2086.92 examples/s]Running tokenizer on train dataset:  22%|██▏       | 25000/114599 [00:13<00:43, 2079.85 examples/s]Running tokenizer on train dataset:  23%|██▎       | 26000/114599 [00:13<00:42, 2087.82 examples/s]Running tokenizer on train dataset:  24%|██▎       | 27000/114599 [00:14<00:41, 2086.51 examples/s]Running tokenizer on train dataset:  24%|██▍       | 28000/114599 [00:14<00:41, 2085.78 examples/s]Running tokenizer on train dataset:  25%|██▌       | 29000/114599 [00:15<00:41, 2083.37 examples/s]Running tokenizer on train dataset:  26%|██▌       | 30000/114599 [00:15<00:40, 2088.99 examples/s]Running tokenizer on train dataset:  27%|██▋       | 31000/114599 [00:15<00:40, 2087.94 examples/s]Running tokenizer on train dataset:  28%|██▊       | 32000/114599 [00:16<00:39, 2082.68 examples/s]Running tokenizer on train dataset:  29%|██▉       | 33000/114599 [00:16<00:39, 2088.76 examples/s]Running tokenizer on train dataset:  30%|██▉       | 34000/114599 [00:17<00:38, 2095.45 examples/s]Running tokenizer on train dataset:  31%|███       | 35000/114599 [00:17<00:37, 2102.50 examples/s]Running tokenizer on train dataset:  31%|███▏      | 36000/114599 [00:18<00:37, 2104.33 examples/s]Running tokenizer on train dataset:  32%|███▏      | 37000/114599 [00:18<00:36, 2117.86 examples/s]Running tokenizer on train dataset:  33%|███▎      | 38000/114599 [00:19<00:36, 2113.86 examples/s]Running tokenizer on train dataset:  34%|███▍      | 39000/114599 [00:19<00:35, 2114.67 examples/s]Running tokenizer on train dataset:  35%|███▍      | 40000/114599 [00:20<00:35, 2119.44 examples/s]Running tokenizer on train dataset:  36%|███▌      | 41000/114599 [00:20<00:34, 2115.62 examples/s]Running tokenizer on train dataset:  37%|███▋      | 42000/114599 [00:21<00:34, 2116.04 examples/s]Running tokenizer on train dataset:  38%|███▊      | 43000/114599 [00:21<00:33, 2113.26 examples/s]Running tokenizer on train dataset:  38%|███▊      | 44000/114599 [00:22<00:33, 2114.17 examples/s]Running tokenizer on train dataset:  39%|███▉      | 45000/114599 [00:22<00:32, 2121.05 examples/s]Running tokenizer on train dataset:  40%|████      | 46000/114599 [00:23<00:32, 2119.58 examples/s]Running tokenizer on train dataset:  41%|████      | 47000/114599 [00:23<00:31, 2122.31 examples/s]Running tokenizer on train dataset:  42%|████▏     | 48000/114599 [00:24<00:31, 2111.00 examples/s]Running tokenizer on train dataset:  43%|████▎     | 49000/114599 [00:24<00:31, 2107.69 examples/s]Running tokenizer on train dataset:  44%|████▎     | 50000/114599 [00:24<00:30, 2109.03 examples/s]Running tokenizer on train dataset:  45%|████▍     | 51000/114599 [00:25<00:30, 2115.46 examples/s]Running tokenizer on train dataset:  45%|████▌     | 52000/114599 [00:25<00:29, 2112.42 examples/s]Running tokenizer on train dataset:  46%|████▌     | 53000/114599 [00:26<00:29, 2116.32 examples/s]Running tokenizer on train dataset:  47%|████▋     | 54000/114599 [00:26<00:28, 2116.40 examples/s]Running tokenizer on train dataset:  48%|████▊     | 55000/114599 [00:27<00:28, 2121.52 examples/s]Running tokenizer on train dataset:  49%|████▉     | 56000/114599 [00:27<00:27, 2117.25 examples/s]Running tokenizer on train dataset:  50%|████▉     | 57000/114599 [00:28<00:27, 2114.12 examples/s]Running tokenizer on train dataset:  51%|█████     | 58000/114599 [00:28<00:26, 2113.80 examples/s]Running tokenizer on train dataset:  51%|█████▏    | 59000/114599 [00:29<00:26, 2114.38 examples/s]Running tokenizer on train dataset:  52%|█████▏    | 60000/114599 [00:29<00:25, 2112.57 examples/s]Running tokenizer on train dataset:  53%|█████▎    | 61000/114599 [00:30<00:25, 2113.84 examples/s]Running tokenizer on train dataset:  54%|█████▍    | 62000/114599 [00:30<00:24, 2108.37 examples/s]Running tokenizer on train dataset:  55%|█████▍    | 63000/114599 [00:31<00:24, 2112.99 examples/s]Running tokenizer on train dataset:  56%|█████▌    | 64000/114599 [00:31<00:23, 2122.15 examples/s]Running tokenizer on train dataset:  57%|█████▋    | 65000/114599 [00:32<00:23, 2122.97 examples/s]Running tokenizer on train dataset:  58%|█████▊    | 66000/114599 [00:32<00:22, 2124.02 examples/s]Running tokenizer on train dataset:  58%|█████▊    | 67000/114599 [00:32<00:22, 2120.58 examples/s]Running tokenizer on train dataset:  59%|█████▉    | 68000/114599 [00:33<00:21, 2118.49 examples/s]Running tokenizer on train dataset:  60%|██████    | 69000/114599 [00:33<00:21, 2115.11 examples/s]Running tokenizer on train dataset:  61%|██████    | 70000/114599 [00:34<00:21, 2117.98 examples/s]Running tokenizer on train dataset:  62%|██████▏   | 71000/114599 [00:34<00:20, 2112.79 examples/s]Running tokenizer on train dataset:  63%|██████▎   | 72000/114599 [00:35<00:20, 2116.46 examples/s]Running tokenizer on train dataset:  64%|██████▎   | 73000/114599 [00:35<00:19, 2113.35 examples/s]Running tokenizer on train dataset:  65%|██████▍   | 74000/114599 [00:36<00:19, 2112.73 examples/s]Running tokenizer on train dataset:  65%|██████▌   | 75000/114599 [00:36<00:18, 2114.46 examples/s]Running tokenizer on train dataset:  66%|██████▋   | 76000/114599 [00:37<00:18, 2115.37 examples/s]Running tokenizer on train dataset:  67%|██████▋   | 77000/114599 [00:37<00:17, 2114.81 examples/s]Running tokenizer on train dataset:  68%|██████▊   | 78000/114599 [00:38<00:17, 2117.52 examples/s]Running tokenizer on train dataset:  69%|██████▉   | 79000/114599 [00:38<00:17, 2060.75 examples/s]Running tokenizer on train dataset:  70%|██████▉   | 80000/114599 [00:39<00:17, 1928.81 examples/s]Running tokenizer on train dataset:  71%|███████   | 81000/114599 [00:39<00:18, 1864.60 examples/s]Running tokenizer on train dataset:  72%|███████▏  | 82000/114599 [00:40<00:17, 1819.32 examples/s]Running tokenizer on train dataset:  72%|███████▏  | 83000/114599 [00:41<00:17, 1792.23 examples/s]Running tokenizer on train dataset:  73%|███████▎  | 84000/114599 [00:41<00:16, 1853.91 examples/s]Running tokenizer on train dataset:  74%|███████▍  | 85000/114599 [00:42<00:15, 1925.47 examples/s]Running tokenizer on train dataset:  75%|███████▌  | 86000/114599 [00:42<00:14, 1993.78 examples/s]Running tokenizer on train dataset:  76%|███████▌  | 87000/114599 [00:42<00:13, 2028.24 examples/s]Running tokenizer on train dataset:  77%|███████▋  | 88000/114599 [00:43<00:12, 2056.02 examples/s]Running tokenizer on train dataset:  78%|███████▊  | 89000/114599 [00:43<00:12, 2070.51 examples/s]Running tokenizer on train dataset:  79%|███████▊  | 90000/114599 [00:44<00:11, 2075.99 examples/s]Running tokenizer on train dataset:  79%|███████▉  | 91000/114599 [00:44<00:11, 2090.86 examples/s]Running tokenizer on train dataset:  80%|████████  | 92000/114599 [00:45<00:11, 2007.58 examples/s]Running tokenizer on train dataset:  81%|████████  | 93000/114599 [00:45<00:11, 1927.37 examples/s]Running tokenizer on train dataset:  82%|████████▏ | 94000/114599 [00:46<00:11, 1864.38 examples/s]Running tokenizer on train dataset:  83%|████████▎ | 95000/114599 [00:47<00:10, 1826.53 examples/s]Running tokenizer on train dataset:  84%|████████▍ | 96000/114599 [00:47<00:10, 1799.10 examples/s]Running tokenizer on train dataset:  85%|████████▍ | 97000/114599 [00:48<00:09, 1869.08 examples/s]Running tokenizer on train dataset:  86%|████████▌ | 98000/114599 [00:48<00:08, 1932.49 examples/s]Running tokenizer on train dataset:  86%|████████▋ | 99000/114599 [00:49<00:07, 1980.78 examples/s]Running tokenizer on train dataset:  87%|████████▋ | 100000/114599 [00:49<00:07, 2018.86 examples/s]Running tokenizer on train dataset:  88%|████████▊ | 101000/114599 [00:50<00:06, 2044.80 examples/s]Running tokenizer on train dataset:  89%|████████▉ | 102000/114599 [00:50<00:06, 2064.95 examples/s]Running tokenizer on train dataset:  90%|████████▉ | 103000/114599 [00:51<00:05, 2075.51 examples/s]Running tokenizer on train dataset:  91%|█████████ | 104000/114599 [00:51<00:05, 2092.17 examples/s]Running tokenizer on train dataset:  92%|█████████▏| 105000/114599 [00:51<00:04, 2099.31 examples/s]Running tokenizer on train dataset:  92%|█████████▏| 106000/114599 [00:52<00:04, 2108.99 examples/s]Running tokenizer on train dataset:  93%|█████████▎| 107000/114599 [00:52<00:03, 2110.72 examples/s]Running tokenizer on train dataset:  94%|█████████▍| 108000/114599 [00:53<00:03, 2113.98 examples/s]Running tokenizer on train dataset:  95%|█████████▌| 109000/114599 [00:53<00:02, 2110.50 examples/s]Running tokenizer on train dataset:  96%|█████████▌| 110000/114599 [00:54<00:02, 2106.37 examples/s]Running tokenizer on train dataset:  97%|█████████▋| 111000/114599 [00:54<00:01, 2118.71 examples/s]Running tokenizer on train dataset:  98%|█████████▊| 112000/114599 [00:55<00:01, 2120.99 examples/s]Running tokenizer on train dataset:  99%|█████████▊| 113000/114599 [00:55<00:00, 2120.63 examples/s]Running tokenizer on train dataset:  99%|█████████▉| 114000/114599 [00:56<00:00, 2120.78 examples/s]Running tokenizer on train dataset: 100%|██████████| 114599/114599 [00:56<00:00, 2121.28 examples/s]                                                                                                    libibverbs: Warning: couldn't load driver 'libcxgb4-rdmav34.so': libcxgb4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhfi1verbs-rdmav34.so': libhfi1verbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'librxe-rdmav34.so': librxe-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmlx4-rdmav34.so': libmlx4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libsiw-rdmav34.so': libsiw-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libipathverbs-rdmav34.so': libipathverbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libbnxt_re-rdmav34.so': libbnxt_re-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libqedr-rdmav34.so': libqedr-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libi40iw-rdmav34.so': libi40iw-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libefa-rdmav34.so': libefa-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmthca-rdmav34.so': libmthca-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libocrdma-rdmav34.so': libocrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhns-rdmav34.so': libhns-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libcxgb4-rdmav34.so': libcxgb4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhfi1verbs-rdmav34.so': libhfi1verbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'librxe-rdmav34.so': librxe-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libvmw_pvrdma-rdmav34.so': libvmw_pvrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmlx4-rdmav34.so': libmlx4-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libsiw-rdmav34.so': libsiw-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libipathverbs-rdmav34.so': libipathverbs-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libbnxt_re-rdmav34.so': libbnxt_re-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libqedr-rdmav34.so': libqedr-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libi40iw-rdmav34.so': libi40iw-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libefa-rdmav34.so': libefa-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libmthca-rdmav34.so': libmthca-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libocrdma-rdmav34.so': libocrdma-rdmav34.so: cannot open shared object file: No such file or directory
+libibverbs: Warning: couldn't load driver 'libhns-rdmav34.so': libhns-rdmav34.so: cannot open shared object file: No such file or directory
+input_ids [5, 65421, 61, 67329, 32, 98339, 61, 72043, 32, 65347, 61, 70872, 32, 69768, 61, 130001, 130004, 5, 87052, 96914, 81471, 64562, 65759, 64493, 64988, 6, 65840, 65388, 74531, 63825, 75786, 130005]
+inputs 类型#裤*版型#宽松*风格#性感*图案# 宽松的阔腿裤这两年真的吸粉不少,明星时尚达人的心头
+label_ids [-100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, 130004, 5, 87052, 96914, 81471, 64562, 65759, 64493, 64988, 6, 65840, 65388, 74531, 63825, 75786, 130005]
+labels <image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100> 宽松的阔腿裤这两年真的吸粉不少,明星时尚达人的心头
+[WARNING|trainer_callback.py:316] 2023-05-15 11:30:19,231 >> You are adding a <class 'transformers.integrations.WandbCallback'> to the callbacks of this Trainer, but there is already one. The currentlist of callbacks is
+:DefaultFlowCallback
+WandbCallback
+/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/transformers/optimization.py:391: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+[2023-05-15 11:30:19,242] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.9.2, git-hash=unknown, git-branch=unknown
+Running tokenizer on train dataset:   0%|          | 0/114599 [00:00<?, ? examples/s]Running tokenizer on train dataset:   1%|          | 1000/114599 [00:00<01:12, 1560.63 examples/s]Running tokenizer on train dataset:   2%|▏         | 2000/114599 [00:01<01:08, 1655.43 examples/s]Running tokenizer on train dataset:   3%|▎         | 3000/114599 [00:01<01:06, 1670.28 examples/s]Running tokenizer on train dataset:   3%|▎         | 4000/114599 [00:02<01:05, 1682.84 examples/s]Running tokenizer on train dataset:   4%|▍         | 5000/114599 [00:02<01:00, 1797.98 examples/s]Running tokenizer on train dataset:   5%|▌         | 6000/114599 [00:03<00:58, 1867.46 examples/s]Running tokenizer on train dataset:   6%|▌         | 7000/114599 [00:03<00:55, 1928.93 examples/s]Running tokenizer on train dataset:   7%|▋         | 8000/114599 [00:04<00:54, 1967.81 examples/s]Running tokenizer on train dataset:   8%|▊         | 9000/114599 [00:04<00:53, 1992.19 examples/s]Running tokenizer on train dataset:   9%|▊         | 10000/114599 [00:05<00:52, 2011.09 examples/s]Running tokenizer on train dataset:  10%|▉         | 11000/114599 [00:05<00:51, 2028.57 examples/s]Running tokenizer on train dataset:  10%|█         | 12000/114599 [00:06<00:50, 2030.37 examples/s]Running tokenizer on train dataset:  11%|█▏        | 13000/114599 [00:06<00:49, 2037.45 examples/s]Running tokenizer on train dataset:  12%|█▏        | 14000/114599 [00:07<00:49, 2034.44 examples/s]Running tokenizer on train dataset:  13%|█▎        | 15000/114599 [00:07<00:48, 2038.39 examples/s]Running tokenizer on train dataset:  14%|█▍        | 16000/114599 [00:08<00:48, 2046.36 examples/s]Running tokenizer on train dataset:  15%|█▍        | 17000/114599 [00:08<00:47, 2057.27 examples/s]Running tokenizer on train dataset:  16%|█▌        | 18000/114599 [00:09<00:47, 2052.35 examples/s]Running tokenizer on train dataset:  17%|█▋        | 19000/114599 [00:09<00:46, 2067.76 examples/s]Running tokenizer on train dataset:  17%|█▋        | 20000/114599 [00:10<00:45, 2072.83 examples/s]Running tokenizer on train dataset:  18%|█▊        | 21000/114599 [00:10<00:44, 2080.18 examples/s]Running tokenizer on train dataset:  19%|█▉        | 22000/114599 [00:11<00:44, 2085.89 examples/s]Running tokenizer on train dataset:  20%|██        | 23000/114599 [00:11<00:43, 2086.49 examples/s]Running tokenizer on train dataset:  21%|██        | 24000/114599 [00:12<00:43, 2091.96 examples/s]Running tokenizer on train dataset:  22%|██▏       | 25000/114599 [00:12<00:42, 2090.43 examples/s]Running tokenizer on train dataset:  23%|██▎       | 26000/114599 [00:13<00:44, 2002.91 examples/s]Running tokenizer on train dataset:  24%|██▎       | 27000/114599 [00:13<00:46, 1903.70 examples/s]Running tokenizer on train dataset:  24%|██▍       | 28000/114599 [00:14<00:46, 1843.28 examples/s]Running tokenizer on train dataset:  25%|██▌       | 29000/114599 [00:14<00:47, 1797.88 examples/s]Running tokenizer on train dataset:  26%|██▌       | 30000/114599 [00:15<00:47, 1774.26 examples/s]Running tokenizer on train dataset:  27%|██▋       | 31000/114599 [00:16<00:47, 1754.80 examples/s]Running tokenizer on train dataset:  28%|██▊       | 32000/114599 [00:16<00:47, 1742.28 examples/s]Running tokenizer on train dataset:  29%|██▉       | 33000/114599 [00:17<00:46, 1754.97 examples/s]Running tokenizer on train dataset:  30%|██▉       | 34000/114599 [00:17<00:43, 1840.10 examples/s]Running tokenizer on train dataset:  31%|███       | 35000/114599 [00:18<00:45, 1759.99 examples/s]Running tokenizer on train dataset:  31%|███▏      | 36000/114599 [00:18<00:45, 1719.16 examples/s]Running tokenizer on train dataset:  32%|███▏      | 37000/114599 [00:19<00:44, 1728.53 examples/s]Running tokenizer on train dataset:  33%|███▎      | 38000/114599 [00:20<00:44, 1714.20 examples/s]Running tokenizer on train dataset:  34%|███▍      | 39000/114599 [00:20<00:44, 1716.67 examples/s]Running tokenizer on train dataset:  35%|███▍      | 40000/114599 [00:21<00:43, 1722.17 examples/s]Running tokenizer on train dataset:  36%|███▌      | 41000/114599 [00:21<00:44, 1646.12 examples/s]Running tokenizer on train dataset:  37%|███▋      | 42000/114599 [00:22<00:43, 1659.69 examples/s]Running tokenizer on train dataset:  38%|███▊      | 43000/114599 [00:23<00:42, 1677.10 examples/s]Running tokenizer on train dataset:  38%|███▊      | 44000/114599 [00:23<00:41, 1696.74 examples/s]Running tokenizer on train dataset:  39%|███▉      | 45000/114599 [00:24<00:39, 1764.51 examples/s]Running tokenizer on train dataset:  40%|████      | 46000/114599 [00:24<00:39, 1734.95 examples/s]Running tokenizer on train dataset:  41%|████      | 47000/114599 [00:25<00:38, 1768.27 examples/s]Running tokenizer on train dataset:  42%|████▏     | 48000/114599 [00:25<00:36, 1841.03 examples/s]Running tokenizer on train dataset:  43%|████▎     | 49000/114599 [00:26<00:36, 1795.92 examples/s]Running tokenizer on train dataset:  44%|████▎     | 50000/114599 [00:26<00:36, 1760.42 examples/s]Running tokenizer on train dataset:  45%|████▍     | 51000/114599 [00:27<00:36, 1751.24 examples/s]Running tokenizer on train dataset:  45%|████▌     | 52000/114599 [00:28<00:36, 1722.04 examples/s]Running tokenizer on train dataset:  46%|████▌     | 53000/114599 [00:28<00:35, 1718.64 examples/s]Running tokenizer on train dataset:  47%|████▋     | 54000/114599 [00:29<00:35, 1718.48 examples/s]Running tokenizer on train dataset:  48%|████▊     | 55000/114599 [00:29<00:34, 1723.51 examples/s]Running tokenizer on train dataset:  49%|████▉     | 56000/114599 [00:30<00:34, 1720.47 examples/s]Running tokenizer on train dataset:  50%|████▉     | 57000/114599 [00:31<00:34, 1659.94 examples/s]Running tokenizer on train dataset:  51%|█████     | 58000/114599 [00:31<00:33, 1673.27 examples/s]Running tokenizer on train dataset:  51%|█████▏    | 59000/114599 [00:32<00:32, 1685.52 examples/s]Running tokenizer on train dataset:  52%|█████▏    | 60000/114599 [00:32<00:32, 1689.06 examples/s]Running tokenizer on train dataset:  53%|█████▎    | 61000/114599 [00:33<00:31, 1692.40 examples/s]Running tokenizer on train dataset:  54%|█████▍    | 62000/114599 [00:34<00:31, 1660.66 examples/s]Running tokenizer on train dataset:  55%|█████▍    | 63000/114599 [00:34<00:30, 1677.34 examples/s]Running tokenizer on train dataset:  56%|█████▌    | 64000/114599 [00:35<00:29, 1696.52 examples/s]Running tokenizer on train dataset:  57%|█████▋    | 65000/114599 [00:35<00:28, 1714.22 examples/s]Running tokenizer on train dataset:  58%|█████▊    | 66000/114599 [00:36<00:27, 1769.50 examples/s]Running tokenizer on train dataset:  58%|█████▊    | 67000/114599 [00:36<00:25, 1858.64 examples/s]Running tokenizer on train dataset:  59%|█████▉    | 68000/114599 [00:37<00:24, 1924.29 examples/s]Running tokenizer on train dataset:  60%|██████    | 69000/114599 [00:37<00:23, 1969.73 examples/s]Running tokenizer on train dataset:  61%|██████    | 70000/114599 [00:38<00:22, 2006.55 examples/s]Running tokenizer on train dataset:  62%|██████▏   | 71000/114599 [00:38<00:21, 2030.85 examples/s]Running tokenizer on train dataset:  63%|██████▎   | 72000/114599 [00:39<00:20, 2056.34 examples/s]Running tokenizer on train dataset:  64%|██████▎   | 73000/114599 [00:39<00:20, 2072.23 examples/s]Running tokenizer on train dataset:  65%|██████▍   | 74000/114599 [00:40<00:20, 1961.64 examples/s]Running tokenizer on train dataset:  65%|██████▌   | 75000/114599 [00:40<00:20, 1921.93 examples/s]Running tokenizer on train dataset:  66%|██████▋   | 76000/114599 [00:41<00:20, 1861.33 examples/s]Running tokenizer on train dataset:  67%|██████▋   | 77000/114599 [00:41<00:20, 1819.74 examples/s]Running tokenizer on train dataset:  68%|██████▊   | 78000/114599 [00:42<00:20, 1793.74 examples/s]Running tokenizer on train dataset:  69%|██████▉   | 79000/114599 [00:43<00:20, 1775.43 examples/s]Running tokenizer on train dataset:  70%|██████▉   | 80000/114599 [00:43<00:19, 1741.55 examples/s]Running tokenizer on train dataset:  71%|███████   | 81000/114599 [00:44<00:19, 1735.80 examples/s]Running tokenizer on train dataset:  72%|███████▏  | 82000/114599 [00:44<00:18, 1729.35 examples/s]Running tokenizer on train dataset:  72%|███████▏  | 83000/114599 [00:45<00:18, 1724.36 examples/s]Running tokenizer on train dataset:  73%|███████▎  | 84000/114599 [00:46<00:17, 1722.83 examples/s]Running tokenizer on train dataset:  74%|███████▍  | 85000/114599 [00:46<00:17, 1720.29 examples/s]Running tokenizer on train dataset:  75%|███████▌  | 86000/114599 [00:47<00:16, 1733.96 examples/s]Running tokenizer on train dataset:  76%|███████▌  | 87000/114599 [00:47<00:15, 1729.41 examples/s]Running tokenizer on train dataset:  77%|███████▋  | 88000/114599 [00:48<00:14, 1821.66 examples/s]Running tokenizer on train dataset:  78%|███████▊  | 89000/114599 [00:48<00:13, 1895.16 examples/s]Running tokenizer on train dataset:  79%|███████▊  | 90000/114599 [00:49<00:12, 1951.29 examples/s]Running tokenizer on train dataset:  79%|███████▉  | 91000/114599 [00:49<00:11, 1991.73 examples/s]Running tokenizer on train dataset:  80%|████████  | 92000/114599 [00:50<00:11, 2021.35 examples/s]Running tokenizer on train dataset:  81%|████████  | 93000/114599 [00:50<00:10, 2049.64 examples/s]Running tokenizer on train dataset:  82%|████████▏ | 94000/114599 [00:51<00:09, 2064.02 examples/s]Running tokenizer on train dataset:  83%|████████▎ | 95000/114599 [00:51<00:09, 2071.17 examples/s]Running tokenizer on train dataset:  84%|████████▍ | 96000/114599 [00:52<00:08, 2085.89 examples/s]Running tokenizer on train dataset:  85%|████████▍ | 97000/114599 [00:52<00:08, 2085.05 examples/s]Running tokenizer on train dataset:  86%|████████▌ | 98000/114599 [00:53<00:07, 2089.74 examples/s]Running tokenizer on train dataset:  86%|████████▋ | 99000/114599 [00:53<00:07, 2089.78 examples/s]Running tokenizer on train dataset:  87%|████████▋ | 100000/114599 [00:53<00:06, 2094.33 examples/s]Running tokenizer on train dataset:  88%|████████▊ | 101000/114599 [00:54<00:06, 2095.93 examples/s]Running tokenizer on train dataset:  89%|████████▉ | 102000/114599 [00:54<00:05, 2103.76 examples/s]Running tokenizer on train dataset:  90%|████████▉ | 103000/114599 [00:55<00:05, 2091.67 examples/s]Running tokenizer on train dataset:  91%|█████████ | 104000/114599 [00:55<00:05, 2092.08 examples/s]Running tokenizer on train dataset:  92%|█████████▏| 105000/114599 [00:56<00:04, 2097.19 examples/s]Running tokenizer on train dataset:  92%|█████████▏| 106000/114599 [00:56<00:04, 2103.85 examples/s]Running tokenizer on train dataset:  93%|█████████▎| 107000/114599 [00:57<00:03, 2102.61 examples/s]Running tokenizer on train dataset:  94%|█████████▍| 108000/114599 [00:57<00:03, 2103.17 examples/s]Running tokenizer on train dataset:  95%|█████████▌| 109000/114599 [00:58<00:02, 2106.73 examples/s]Running tokenizer on train dataset:  96%|█████████▌| 110000/114599 [00:58<00:02, 2109.53 examples/s]Running tokenizer on train dataset:  97%|█████████▋| 111000/114599 [00:59<00:01, 2114.49 examples/s]Running tokenizer on train dataset:  98%|█████████▊| 112000/114599 [00:59<00:01, 2117.80 examples/s]Running tokenizer on train dataset:  99%|█████████▊| 113000/114599 [01:00<00:00, 2114.97 examples/s]Running tokenizer on train dataset:  99%|█████████▉| 114000/114599 [01:00<00:00, 2112.73 examples/s]Running tokenizer on train dataset: 100%|██████████| 114599/114599 [01:00<00:00, 2111.67 examples/s]                                                                                                    input_ids [5, 65421, 61, 67329, 32, 98339, 61, 72043, 32, 65347, 61, 70872, 32, 69768, 61, 130001, 130004, 5, 87052, 96914, 81471, 64562, 65759, 64493, 64988, 6, 65840, 65388, 74531, 63825, 75786, 130005]
+inputs 类型#裤*版型#宽松*风格#性感*图案# 宽松的阔腿裤这两年真的吸粉不少,明星时尚达人的心头
+label_ids [-100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, 130004, 5, 87052, 96914, 81471, 64562, 65759, 64493, 64988, 6, 65840, 65388, 74531, 63825, 75786, 130005]
+labels <image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100><image_-100> 宽松的阔腿裤这两年真的吸粉不少,明星时尚达人的心头
+[WARNING|trainer_callback.py:316] 2023-05-15 11:31:20,168 >> You are adding a <class 'transformers.integrations.WandbCallback'> to the callbacks of this Trainer, but there is already one. The currentlist of callbacks is
+:DefaultFlowCallback
+WandbCallback
+/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/transformers/optimization.py:391: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+[2023-05-15 11:31:31,995] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2023-05-15 11:31:31,996] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the client Optimizer
+[2023-05-15 11:31:31,996] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2023-05-15 11:31:32,013] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
+[2023-05-15 11:31:32,013] [INFO] [utils.py:54:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'transformers.optimization.AdamW'>
+[2023-05-15 11:31:32,013] [WARNING] [engine.py:1104:_do_optimizer_sanity_check] **** You are using ZeRO with an untested optimizer, proceed with caution *****
+[2023-05-15 11:31:32,014] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.float16 ZeRO stage 2 optimizer
+[2023-05-15 11:31:32,014] [INFO] [stage_1_and_2.py:133:__init__] Reduce bucket size 500000000
+[2023-05-15 11:31:32,014] [INFO] [stage_1_and_2.py:134:__init__] Allgather bucket size 500000000
+[2023-05-15 11:31:32,014] [INFO] [stage_1_and_2.py:135:__init__] CPU Offload: False
+[2023-05-15 11:31:32,014] [INFO] [stage_1_and_2.py:136:__init__] Round robin gradient partitioning: False
+Using /home/tricorder/.cache/torch_extensions/py310_cu117 as PyTorch extensions root...
+Emitting ninja build file /home/tricorder/.cache/torch_extensions/py310_cu117/utils/build.ninja...
+Building extension module utils...
+Allowing ninja to set a default number of workers... (overridable by setting the environment variable MAX_JOBS=N)
+ninja: no work to do.
+Using /home/tricorder/.cache/torch_extensions/py310_cu117 as PyTorch extensions root...
+Loading extension module utils...
+Time to load utils op: 0.0982825756072998 seconds
+Loading extension module utils...
+Time to load utils op: 0.10499024391174316 seconds
+Rank: 0 partition count [2, 2] and sizes[(3085893632, False), (749568, False)] 
+Rank: 1 partition count [2, 2] and sizes[(3085893632, False), (749568, False)] 
+Using /home/tricorder/.cache/torch_extensions/py310_cu117 as PyTorch extensions root...
+No modifications detected for re-loaded extension module utils, skipping build step...
+Loading extension module utils...
+Time to load utils op: 0.0009772777557373047 seconds
+[2023-05-15 11:31:44,588] [INFO] [utils.py:785:see_memory_usage] Before initializing optimizer states
+[2023-05-15 11:31:44,589] [INFO] [utils.py:786:see_memory_usage] MA 23.0 GB         Max_MA 23.0 GB         CA 23.01 GB         Max_CA 23 GB 
+[2023-05-15 11:31:44,590] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 61.42 GB, percent = 8.1%
+05/15/2023 11:31:44 - WARNING - transformers_modules.THUDM.chatglm-6b.a10da4c68b5d616030d3531fc37a13bb44ea814d.modeling_chatglm - `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`...
+[2023-05-15 11:31:44,758] [INFO] [utils.py:785:see_memory_usage] After initializing optimizer states
+[2023-05-15 11:31:44,759] [INFO] [utils.py:786:see_memory_usage] MA 46.0 GB         Max_MA 68.99 GB         CA 69.0 GB         Max_CA 69 GB 
+[2023-05-15 11:31:44,759] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 61.48 GB, percent = 8.1%
+[2023-05-15 11:31:44,759] [INFO] [stage_1_and_2.py:489:__init__] optimizer state initialized
+[2023-05-15 11:31:44,894] [INFO] [utils.py:785:see_memory_usage] After initializing ZeRO optimizer
+[2023-05-15 11:31:44,895] [INFO] [utils.py:786:see_memory_usage] MA 46.0 GB         Max_MA 46.0 GB         CA 69.0 GB         Max_CA 69 GB 
+[2023-05-15 11:31:44,895] [INFO] [utils.py:793:see_memory_usage] CPU Virtual Memory:  used = 61.56 GB, percent = 8.2%
+[2023-05-15 11:31:44,901] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = AdamW
+[2023-05-15 11:31:44,901] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2023-05-15 11:31:44,901] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = <torch.optim.lr_scheduler.LambdaLR object at 0x7fd743eb8fd0>
+[2023-05-15 11:31:44,901] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0001, 0.0001], mom=[(0.9, 0.999), (0.9, 0.999)]
+[2023-05-15 11:31:44,902] [INFO] [config.py:955:print] DeepSpeedEngine configuration:
+[2023-05-15 11:31:44,902] [INFO] [config.py:959:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2023-05-15 11:31:44,903] [INFO] [config.py:959:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2023-05-15 11:31:44,903] [INFO] [config.py:959:print]   amp_enabled .................. False
+[2023-05-15 11:31:44,903] [INFO] [config.py:959:print]   amp_params ................... False
+[2023-05-15 11:31:44,903] [INFO] [config.py:959:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2023-05-15 11:31:44,903] [INFO] [config.py:959:print]   bfloat16_enabled ............. False
+[2023-05-15 11:31:44,903] [INFO] [config.py:959:print]   checkpoint_parallel_write_pipeline  False
+[2023-05-15 11:31:44,903] [INFO] [config.py:959:print]   checkpoint_tag_validation_enabled  True
+[2023-05-15 11:31:44,903] [INFO] [config.py:959:print]   checkpoint_tag_validation_fail  False
+[2023-05-15 11:31:44,903] [INFO] [config.py:959:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7fd743eb91b0>
+[2023-05-15 11:31:44,903] [INFO] [config.py:959:print]   communication_data_type ...... None
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   curriculum_enabled_legacy .... False
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   curriculum_params_legacy ..... False
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   data_efficiency_enabled ...... False
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   dataloader_drop_last ......... False
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   disable_allgather ............ False
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   dump_state ................... False
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   dynamic_loss_scale_args ...... {'init_scale': 65536, 'scale_window': 1000, 'delayed_shift': 2, 'min_scale': 1}
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   eigenvalue_enabled ........... False
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   eigenvalue_gas_boundary_resolution  1
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   eigenvalue_layer_num ......... 0
+[2023-05-15 11:31:44,904] [INFO] [config.py:959:print]   eigenvalue_max_iter .......... 100
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   eigenvalue_stability ......... 1e-06
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   eigenvalue_tol ............... 0.01
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   eigenvalue_verbose ........... False
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   elasticity_enabled ........... False
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   fp16_auto_cast ............... False
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   fp16_enabled ................. True
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   fp16_master_weights_and_gradients  False
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   global_rank .................. 0
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   grad_accum_dtype ............. None
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   gradient_accumulation_steps .. 1
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   gradient_clipping ............ 0.0
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   gradient_predivide_factor .... 1.0
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2023-05-15 11:31:44,905] [INFO] [config.py:959:print]   initial_dynamic_scale ........ 65536
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   load_universal_checkpoint .... False
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   loss_scale ................... 0
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   memory_breakdown ............. False
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   mics_hierarchial_params_gather  False
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   mics_shard_size .............. -1
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   optimizer_legacy_fusion ...... False
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   optimizer_name ............... None
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   optimizer_params ............. None
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0}
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   pld_enabled .................. False
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   pld_params ................... False
+[2023-05-15 11:31:44,906] [INFO] [config.py:959:print]   prescale_gradients ........... False
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   scheduler_name ............... None
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   scheduler_params ............. None
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   sparse_attention ............. None
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   sparse_gradients_enabled ..... False
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   steps_per_print .............. 10
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   train_batch_size ............. 2
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   train_micro_batch_size_per_gpu  1
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   use_node_local_storage ....... False
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   wall_clock_breakdown ......... False
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   world_size ................... 2
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   zero_allow_untested_optimizer  True
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   zero_config .................. stage=2 contiguous_gradients=True reduce_scatter=True reduce_bucket_size=500000000 allgather_partitions=True allgather_bucket_size=500000000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=False stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   zero_enabled ................. True
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   zero_force_ds_cpu_optimizer .. True
+[2023-05-15 11:31:44,907] [INFO] [config.py:959:print]   zero_optimization_stage ...... 2
+[2023-05-15 11:31:44,908] [INFO] [config.py:945:print_user_config]   json = {
+    "train_micro_batch_size_per_gpu": 1, 
+    "zero_allow_untested_optimizer": true, 
+    "fp16": {
+        "enabled": true, 
+        "loss_scale": 0, 
+        "initial_scale_power": 16, 
+        "loss_scale_window": 1000, 
+        "hysteresis": 2, 
+        "min_loss_scale": 1
+    }, 
+    "zero_optimization": {
+        "stage": 2, 
+        "allgather_partitions": true, 
+        "allgather_bucket_size": 5.000000e+08, 
+        "overlap_comm": false, 
+        "reduce_scatter": true, 
+        "reduce_bucket_size": 5.000000e+08, 
+        "contiguous_gradients": true
+    }
+}
+Using /home/tricorder/.cache/torch_extensions/py310_cu117 as PyTorch extensions root...
+No modifications detected for re-loaded extension module utils, skipping build step...
+Loading extension module utils...
+Time to load utils op: 0.0005476474761962891 seconds
+[INFO|integrations.py:709] 2023-05-15 11:31:44,911 >> Automatic Weights & Biases logging enabled, to disable set os.environ["WANDB_DISABLED"] = "true"
+[INFO|integrations.py:709] 2023-05-15 11:31:44,929 >> Automatic Weights & Biases logging enabled, to disable set os.environ["WANDB_DISABLED"] = "true"
+  0%|          | 0/3000 [00:00<?, ?it/s]05/15/2023 11:31:44 - WARNING - transformers_modules.THUDM.chatglm-6b.a10da4c68b5d616030d3531fc37a13bb44ea814d.modeling_chatglm - `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`...
+[2023-05-15 11:31:48,453] [INFO] [loss_scaler.py:188:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 65536, but hysteresis is 2. Reducing hysteresis to 1
+  0%|          | 1/3000 [00:03<2:55:19,  3.51s/it][2023-05-15 11:31:49,378] [INFO] [loss_scaler.py:181:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 65536, reducing to 32768
+  0%|          | 2/3000 [00:04<1:39:20,  1.99s/it][2023-05-15 11:31:50,294] [INFO] [loss_scaler.py:181:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 32768, reducing to 16384
+  0%|          | 3/3000 [00:05<1:14:51,  1.50s/it][2023-05-15 11:31:51,214] [INFO] [loss_scaler.py:181:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 16384, reducing to 8192
+  0%|          | 4/3000 [00:06<1:03:25,  1.27s/it][2023-05-15 11:31:52,131] [INFO] [loss_scaler.py:181:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 8192, reducing to 4096
+  0%|          | 5/3000 [00:07<57:02,  1.14s/it]  [2023-05-15 11:31:53,049] [INFO] [loss_scaler.py:181:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 4096, reducing to 2048
+  0%|          | 6/3000 [00:08<53:12,  1.07s/it][2023-05-15 11:31:53,970] [INFO] [loss_scaler.py:181:update_scale] [deepspeed] OVERFLOW! Rank 0 Skipping step. Attempted loss scale: 2048, reducing to 1024
+  0%|          | 7/3000 [00:09<50:48,  1.02s/it]Traceback (most recent call last):
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/main_wandb.py", line 437, in <module>
+    main()
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/main_wandb.py", line 376, in main
+    train_result = trainer.train(resume_from_checkpoint=checkpoint)
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/trainer.py", line 1635, in train
+    return inner_training_loop(
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/trainer.py", line 1920, in _inner_training_loop
+    self.deepspeed.step()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 2037, in step
+    self._take_model_step(lr_kwargs)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 1944, in _take_model_step
+    self.optimizer.step()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 1715, in step
+    single_grad_partition = self.flatten(self.averaged_gradients[i]).to(
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 11.50 GiB (GPU 0; 79.21 GiB total capacity; 63.50 GiB already allocated; 1.35 GiB free; 74.75 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+Traceback (most recent call last):
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/main_wandb.py", line 437, in <module>
+    main()
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/main_wandb.py", line 376, in main
+    train_result = trainer.train(resume_from_checkpoint=checkpoint)
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/trainer.py", line 1635, in train
+    return inner_training_loop(
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/trainer.py", line 1920, in _inner_training_loop
+    self.deepspeed.step()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 2037, in step
+    self._take_model_step(lr_kwargs)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 1944, in _take_model_step
+    self.optimizer.step()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/deepspeed/runtime/zero/stage_1_and_2.py", line 1713, in step
+    int(self.partition_size[i])).to(self.single_partition_of_fp32_groups[i].dtype)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 11.50 GiB (GPU 1; 79.21 GiB total capacity; 63.26 GiB already allocated; 350.62 MiB free; 74.75 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+Thread SenderThread:
+Traceback (most recent call last):
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/internal_util.py", line 49, in run
+    self._run()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/internal_util.py", line 100, in _run
+    self._process(record)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/internal.py", line 328, in _process
+    self._sm.send(record)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/sender.py", line 382, in send
+    send_handler(record)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/sender.py", line 404, in send_request
+    send_handler(record)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/sender.py", line 654, in send_request_defer
+    self._flush_job()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/sender.py", line 1626, in _flush_job
+    artifact = self._job_builder.build()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/job_builder.py", line 217, in build
+    with artifact.new_file("wandb-job.json") as f:
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py", line 414, in new_file
+    self.add_file(path, name=name)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py", line 435, in add_file
+    return self._add_local_file(name, local_path, digest=digest)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py", line 735, in _add_local_file
+    shutil.copyfile(path, staging_path)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/shutil.py", line 267, in copyfile
+    _fastcopy_sendfile(fsrc, fdst)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/shutil.py", line 156, in _fastcopy_sendfile
+    raise err from None
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/shutil.py", line 142, in _fastcopy_sendfile
+    sent = os.sendfile(outfd, infd, offset, blocksize)
+OSError: [Errno 28] No space left on device: '/tmp/tmphagdd468/wandb-job.json' -> '/home/tricorder/.local/share/wandb/artifacts/staging/tmpjwgt5nbj'
+Thread SenderThread:
+Traceback (most recent call last):
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/internal_util.py", line 49, in run
+    self._run()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/internal_util.py", line 100, in _run
+    self._process(record)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/internal.py", line 328, in _process
+    self._sm.send(record)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/sender.py", line 382, in send
+    send_handler(record)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/sender.py", line 404, in send_request
+    send_handler(record)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/sender.py", line 654, in send_request_defer
+    self._flush_job()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/sender.py", line 1626, in _flush_job
+    artifact = self._job_builder.build()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/internal/job_builder.py", line 217, in build
+    with artifact.new_file("wandb-job.json") as f:
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/contextlib.py", line 142, in __exit__
+    next(self.gen)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py", line 414, in new_file
+    self.add_file(path, name=name)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py", line 435, in add_file
+    return self._add_local_file(name, local_path, digest=digest)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/wandb/sdk/wandb_artifacts.py", line 735, in _add_local_file
+    shutil.copyfile(path, staging_path)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/shutil.py", line 267, in copyfile
+    _fastcopy_sendfile(fsrc, fdst)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/shutil.py", line 156, in _fastcopy_sendfile
+    raise err from None
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/shutil.py", line 142, in _fastcopy_sendfile
+    sent = os.sendfile(outfd, infd, offset, blocksize)
+OSError: [Errno 28] No space left on device: '/tmp/tmptdif9ql4/wandb-job.json' -> '/home/tricorder/.local/share/wandb/artifacts/staging/tmpaekak7ms'
+wandb: ERROR Internal wandb error: file data was not synced
+wandb: ERROR Internal wandb error: file data was not synced
+[2023-05-15 11:31:59,748] [INFO] [launch.py:428:sigkill_handler] Killing subprocess 2874538
+[2023-05-15 11:31:59,906] [INFO] [launch.py:428:sigkill_handler] Killing subprocess 2874539
+[2023-05-15 11:31:59,906] [ERROR] [launch.py:434:sigkill_handler] ['/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/bin/python', '-u', 'main_wandb.py', '--local_rank=1', '--deepspeed', 'deepspeed.json', '--do_train', '--train_file', 'AdvertiseGen/train.json', '--test_file', 'AdvertiseGen/dev.json', '--prompt_column', 'content', '--response_column', 'summary', '--overwrite_cache', '--model_name_or_path', 'THUDM/chatglm-6b', '--output_dir', './output/adgen-chatglm-6b-ft-1e-4-wandb', '--overwrite_output_dir', '--max_source_length', '16', '--max_target_length', '16', '--per_device_train_batch_size', '1', '--per_device_eval_batch_size', '1', '--gradient_accumulation_steps', '1', '--predict_with_generate', '--max_steps', '3000', '--logging_steps', '10', '--save_steps', '1000', '--learning_rate', '1e-4', '--fp16'] exits with return code = 255

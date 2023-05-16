@@ -1,0 +1,207 @@
+[2023-05-09 09:24:58,443] [WARNING] [runner.py:191:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2023-05-09 09:24:58,462] [INFO] [runner.py:541:main] cmd = /home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/bin/python -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMCwgMV19 --master_addr=127.0.0.1 --master_port=36497 --enable_each_rank_log=None main_wandb.py --deepspeed deepspeed.json --do_train --train_file AdvertiseGen/train.json --test_file AdvertiseGen/dev.json --prompt_column content --response_column summary --overwrite_cache --model_name_or_path THUDM/chatglm-6b --output_dir ./output/adgen-chatglm-6b-ft-1e-4-wandb --overwrite_output_dir --max_source_length 64 --max_target_length 64 --per_device_train_batch_size 4 --per_device_eval_batch_size 1 --gradient_accumulation_steps 1 --predict_with_generate --max_steps 3000 --logging_steps 10 --save_steps 1000 --learning_rate 1e-4 --fp16
+[2023-05-09 09:25:00,687] [INFO] [launch.py:229:main] WORLD INFO DICT: {'localhost': [0, 1]}
+[2023-05-09 09:25:00,688] [INFO] [launch.py:235:main] nnodes=1, num_local_procs=2, node_rank=0
+[2023-05-09 09:25:00,688] [INFO] [launch.py:246:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1]})
+[2023-05-09 09:25:00,688] [INFO] [launch.py:247:main] dist_world_size=2
+[2023-05-09 09:25:00,688] [INFO] [launch.py:249:main] Setting CUDA_VISIBLE_DEVICES=0,1
+wandb: Currently logged in as: gaoxiaoce0428. Use `wandb login --relogin` to force relogin
+wandb: Currently logged in as: gaoxiaoce0428. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in /home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/wandb/run-20230509_092505-ar8j62lb
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run astral-music-18
+wandb: ⭐️ View project at https://wandb.ai/gaoxiaoce0428/chatGLM_6b
+wandb: 🚀 View run at https://wandb.ai/gaoxiaoce0428/chatGLM_6b/runs/ar8j62lb
+wandb: Tracking run with wandb version 0.15.2
+wandb: Run data is saved locally in /home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/wandb/run-20230509_092505-q9l8xyi8
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run dutiful-sky-19
+wandb: ⭐️ View project at https://wandb.ai/gaoxiaoce0428/chatGLM_6b
+wandb: 🚀 View run at https://wandb.ai/gaoxiaoce0428/chatGLM_6b/runs/q9l8xyi8
+[2023-05-09 09:25:09,639] [INFO] [comm.py:622:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+05/09/2023 09:25:10 - WARNING - __main__ - Process rank: 0, device: cuda:0, n_gpu: 1distributed training: True, 16-bits training: True
+05/09/2023 09:25:10 - INFO - __main__ - Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=False,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=deepspeed.json,
+disable_tqdm=False,
+do_eval=False,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=True,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'fsdp_min_num_params': 0, 'xla': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+generation_max_length=None,
+generation_num_beams=None,
+gradient_accumulation_steps=1,
+gradient_checkpointing=False,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.0001,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=passive,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=./output/adgen-chatglm-6b-ft-1e-4-wandb/runs/May09_09-25-09_powerleader,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=10,
+logging_strategy=steps,
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=3000,
+metric_for_best_model=None,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=adamw_hf,
+optim_args=None,
+output_dir=./output/adgen-chatglm-6b-ft-1e-4-wandb,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=1,
+per_device_train_batch_size=4,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['wandb'],
+resume_from_checkpoint=None,
+run_name=./output/adgen-chatglm-6b-ft-1e-4-wandb,
+save_on_each_node=False,
+save_steps=1000,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+xpu_backend=None,
+)
+05/09/2023 09:25:10 - WARNING - __main__ - Process rank: 1, device: cuda:1, n_gpu: 1distributed training: True, 16-bits training: True
+05/09/2023 09:25:11 - WARNING - datasets.builder - Found cached dataset json (/home/tricorder/yang/datasets/json/default-893099228a2d8f98/0.0.0/e347ab1c932092252e717ff3f949105a4dd28b27e842dd53157d2f72e276c2e4)
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [00:00<00:00, 502.31it/s]
+05/09/2023 09:25:11 - WARNING - datasets.builder - Found cached dataset json (/home/tricorder/yang/datasets/json/default-893099228a2d8f98/0.0.0/e347ab1c932092252e717ff3f949105a4dd28b27e842dd53157d2f72e276c2e4)
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [00:00<00:00, 513.85it/s]
+[INFO|configuration_utils.py:668] 2023-05-09 09:25:12,285 >> loading configuration file config.json from cache at /home/tricorder/yang/hub/models--THUDM--chatglm-6b/snapshots/4d0fc39a58dcb747ab74ab2c4587bd66dcfa7e74/config.json
+[WARNING|configuration_auto.py:905] 2023-05-09 09:25:12,285 >> Explicitly passing a `revision` is encouraged when loading a configuration with custom code to ensure no malicious code has been contributed in a newer revision.
+[WARNING|configuration_auto.py:905] 2023-05-09 09:25:12,339 >> Explicitly passing a `revision` is encouraged when loading a configuration with custom code to ensure no malicious code has been contributed in a newer revision.
+Traceback (most recent call last):
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/huggingface_hub/utils/_errors.py", line 259, in hf_raise_for_status
+    response.raise_for_status()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 504 Server Error: Gateway Time-out for url: https://huggingface.co/api/models/THUDM/chatglm-6b
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/main_wandb.py", line 437, in <module>
+    main()
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/main_wandb.py", line 113, in main
+    config = AutoConfig.from_pretrained(model_args.model_name_or_path, trust_remote_code=True)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 911, in from_pretrained
+    config_class = get_class_from_dynamic_module(
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/transformers/dynamic_module_utils.py", line 388, in get_class_from_dynamic_module
+    final_module = get_cached_module_file(
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/transformers/dynamic_module_utils.py", line 286, in get_cached_module_file
+    commit_hash = model_info(pretrained_model_name_or_path, revision=revision, token=use_auth_token).sha
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 120, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/huggingface_hub/hf_api.py", line 1604, in model_info
+    hf_raise_for_status(r)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/huggingface_hub/utils/_errors.py", line 301, in hf_raise_for_status
+    raise HfHubHTTPError(str(e), response=response) from e
+huggingface_hub.utils._errors.HfHubHTTPError: 504 Server Error: Gateway Time-out for url: https://huggingface.co/api/models/THUDM/chatglm-6b
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+Traceback (most recent call last):
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/huggingface_hub/utils/_errors.py", line 259, in hf_raise_for_status
+    response.raise_for_status()
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 504 Server Error: Gateway Time-out for url: https://huggingface.co/api/models/THUDM/chatglm-6b
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/main_wandb.py", line 437, in <module>
+    main()
+  File "/home/tricorder/test/gxc/chatglm/6b/ChatGLM-6B/ptuning/main_wandb.py", line 113, in main
+    config = AutoConfig.from_pretrained(model_args.model_name_or_path, trust_remote_code=True)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 911, in from_pretrained
+    config_class = get_class_from_dynamic_module(
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/transformers/dynamic_module_utils.py", line 388, in get_class_from_dynamic_module
+    final_module = get_cached_module_file(
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/transformers/dynamic_module_utils.py", line 286, in get_cached_module_file
+    commit_hash = model_info(pretrained_model_name_or_path, revision=revision, token=use_auth_token).sha
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 120, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/huggingface_hub/hf_api.py", line 1604, in model_info
+    hf_raise_for_status(r)
+  File "/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/lib/python3.10/site-packages/huggingface_hub/utils/_errors.py", line 301, in hf_raise_for_status
+    raise HfHubHTTPError(str(e), response=response) from e
+huggingface_hub.utils._errors.HfHubHTTPError: 504 Server Error: Gateway Time-out for url: https://huggingface.co/api/models/THUDM/chatglm-6b
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: 🚀 View run dutiful-sky-19 at: https://wandb.ai/gaoxiaoce0428/chatGLM_6b/runs/q9l8xyi8
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230509_092505-q9l8xyi8/logs
+wandb: 🚀 View run astral-music-18 at: https://wandb.ai/gaoxiaoce0428/chatGLM_6b/runs/ar8j62lb
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20230509_092505-ar8j62lb/logs
+[2023-05-09 09:26:52,801] [INFO] [launch.py:428:sigkill_handler] Killing subprocess 2395395
+[2023-05-09 09:26:52,828] [INFO] [launch.py:428:sigkill_handler] Killing subprocess 2395396
+[2023-05-09 09:26:52,828] [ERROR] [launch.py:434:sigkill_handler] ['/home/tricorder/yang/anaconda3/envs/chatglm_6b_ptuning2/bin/python', '-u', 'main_wandb.py', '--local_rank=1', '--deepspeed', 'deepspeed.json', '--do_train', '--train_file', 'AdvertiseGen/train.json', '--test_file', 'AdvertiseGen/dev.json', '--prompt_column', 'content', '--response_column', 'summary', '--overwrite_cache', '--model_name_or_path', 'THUDM/chatglm-6b', '--output_dir', './output/adgen-chatglm-6b-ft-1e-4-wandb', '--overwrite_output_dir', '--max_source_length', '64', '--max_target_length', '64', '--per_device_train_batch_size', '4', '--per_device_eval_batch_size', '1', '--gradient_accumulation_steps', '1', '--predict_with_generate', '--max_steps', '3000', '--logging_steps', '10', '--save_steps', '1000', '--learning_rate', '1e-4', '--fp16'] exits with return code = 1

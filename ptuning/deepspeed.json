@@ -17,5 +17,22 @@
     "reduce_scatter": true,
     "reduce_bucket_size": 5e8,
     "contiguous_gradients" : true
-  }
+  },
+  "training_optimizer": {
+        "gradient_accumulation_steps": 1,
+        "automatic_mixed_precision": {
+            "enabled": true
+        },
+        "checkpoint_activations": true,
+        "fp16": {
+            "enabled": true
+        },
+        "zero_allow_cpu_offload": true,
+        "zero_optimization": {
+            "stage": 0,
+            "offload_optimizer": {
+                "device": "cpu"
+            }
+        }
+    }
 }
