@@ -358,7 +358,7 @@ def main():
         save_prefixencoder=model_args.pre_seq_len is not None
     )
 
-    print('loss funtion:'+ trainer.loss_fn)
+   # print('loss funtion:'+ trainer.loss_fn)
 
     # Training
     if training_args.do_train:

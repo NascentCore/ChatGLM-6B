@@ -2,10 +2,11 @@
 __pycache__/
 *.py[cod]
 *$py.class
-./ptuning/output
 *.swp
 ptuning/AdvertiseGen/
-ptuning/output/
+ptuning/output/*
+ptuning/wandb/*
+
 # C extensions
 *.so
 
