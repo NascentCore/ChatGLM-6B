@@ -1,0 +1,106 @@
+# 设置基础映像
+FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04
+
+# 定义构建参数
+# 例如ARG USER=test为USER变量设置默认值"test"。
+ARG USER=test
+ARG PASSWORD=${USER}123$
+
+# 处理讨厌的 Python 3 编码问题
+ENV LANG C.UTF-8
+ENV DEBIAN_FRONTEND noninteractive
+ENV MPLLOCALFREETYPE 1
+
+# 更新软件包列表并安装软件属性通用包
+RUN apt-get update && apt-get install -y software-properties-common
+
+# 添加Python ppa，以便后续安装Python版本
+RUN add-apt-repository ppa:deadsnakes/ppa
+
+# 安装Ubuntu的常用软件包，包括wget、vim、curl、zip、unzip等
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    git \
+    wget \
+    vim \
+    curl \
+    zip \
+    zlib1g-dev \
+    unzip \
+    pkg-config \
+    libgl-dev \
+    libblas-dev \
+    liblapack-dev \
+    python3-tk \
+    python3-wheel \
+    graphviz \
+    libhdf5-dev \
+    python3.9 \
+    python3.9-dev \
+    python3.9-distutils \
+    openssh-server \
+    swig \
+    apt-transport-https \
+    lsb-release \
+    libpng-dev \
+    ca-certificates &&\
+    apt-get clean &&\
+    ln -s /usr/bin/python3.9 /usr/local/bin/python &&\
+    ln -s /usr/bin/python3.9 /usr/local/bin/python3 &&\
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py &&\
+    python3 get-pip.py &&\
+    rm get-pip.py &&\
+    # 清理APT缓存以减小Docker镜像大小
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# 设置时区
+ENV TZ=Asia/Seoul
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# 为应用程序创建一个用户
+RUN useradd --create-home --shell /bin/bash --groups sudo ${USER}
+RUN echo ${USER}:${PASSWORD} | chpasswd
+USER ${USER}
+ENV HOME /home/${USER}
+WORKDIR $HOME
+
+# 安装一些Python库，例如numpy、matplotlib、scipy等
+RUN python3 -m pip --no-cache-dir install \
+    blackcellmagic\
+    pytest \
+    pytest-cov \
+    numpy \
+    matplotlib \
+    scipy \
+    pandas \
+    jupyter \
+    scikit-learn \
+    scikit-image \
+    seaborn \
+    graphviz \
+    gpustat \
+    h5py \
+    gitpython \
+    ptvsd \
+    Pillow==6.1.0 \
+    opencv-python
+
+# 安装PyTorch和DataJoint等其他库
+# 其中torch==1.13.1表示安装版本为1.13.1的PyTorch
+RUN python3 -m pip --no-cache-dir install \
+    torch==1.13.1 \
+    torchvision==0.14.1 \
+    torchaudio==0.13.1 \
+    'jupyterlab>=2'
+
+RUN python3 -m pip --no-cache-dir install datajoint==0.12.9
+
+# 设置环境变量LD_LIBRARY_PATH，以便支持性能分析库
+ENV LD_LIBRARY_PATH /usr/local/cuda/extras/CUPTI/lib64:${LD_LIBRARY_PATH}
+
+# 启动ssh服务器，打开22号端口
+USER root
+
+RUN mkdir /var/run/sshd
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
