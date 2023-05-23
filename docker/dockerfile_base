@@ -11,6 +11,7 @@ ENV LANG C.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 ENV MPLLOCALFREETYPE 1
 
+
 # 更新软件包列表并安装软件属性通用包
 RUN apt-get update && apt-get install -y software-properties-common
 

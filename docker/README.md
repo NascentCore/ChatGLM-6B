@@ -1,4 +1,8 @@
-# Dockerfile
+# Docker
+
+用于记录 Docker 镜像相关的代码
+
+## 构建 Docker 镜像
 
 运行下面命令构建 docker 镜像
 ```shell
