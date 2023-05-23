@@ -5,6 +5,7 @@ __pycache__/
 *.swp
 ptuning/AdvertiseGen/
 ptuning/output/*
+ptuning/output_log/*
 ptuning/wandb/*
 
 # C extensions
