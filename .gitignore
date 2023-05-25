@@ -11,7 +11,7 @@ ptuning/promptclue/wandb/*
 hub/*
 finetuning/d2q_result_data/*
 finetuning/data/*
-
+finetuning/__MACOSX/*
 
 # C extensions
 *.so
