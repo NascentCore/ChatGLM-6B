@@ -9,6 +9,10 @@ ptuning/output_log/*
 ptuning/wandb/*
 ptuning/promptclue/wandb/*
 hub/*
+finetuning/d2q_result_data/*
+finetuning/data/*
+
+
 # C extensions
 *.so
 
