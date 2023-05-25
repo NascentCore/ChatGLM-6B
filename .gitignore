@@ -7,7 +7,8 @@ ptuning/AdvertiseGen/
 ptuning/output/*
 ptuning/output_log/*
 ptuning/wandb/*
-
+ptuning/promptclue/wandb/*
+hub/*
 # C extensions
 *.so
 

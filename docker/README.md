@@ -2,6 +2,18 @@
 
 用于记录 Docker 镜像相关的代码
 
+## Install docker
+
+```
+# Update apt-get and install docker package
+sudo apt-get update
+# sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+sudo apt-get install docker.io
+cd ~/test/workspace/NascentCore/ChatGLM-6B/
+# 更新项目的依赖文件
+pipreqs ./ --encoding=utf8  --force
+```
+
 ## 构建 Docker 镜像
 
 运行下面命令构建 docker 镜像

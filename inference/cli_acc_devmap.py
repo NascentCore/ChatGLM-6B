@@ -3,11 +3,13 @@ import platform
 import signal
 from transformers import AutoTokenizer, AutoModel
 import readline
+from accelerate import infer_auto_device_map, init_empty_weights
+
 
 tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
 model = AutoModel.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True, device_map="auto").half().cuda()
 print("输出模型在显卡上的分配:")
-device_map = {f"base_model.model.{k}": v for k, v in model.hf_device_map.items()}
+device_map = infer_auto_device_map(model)
 print(device_map)
 model = model.eval()
 
