@@ -8,7 +8,7 @@ LR=2e-2
 #CUDA_VISIBLE_DEVICES=0
 nohup python3 ../main.py \
     --do_train \
-    --train_file ../../../data/pCLUE/history/pCLUE_train_1.csv \
+    --train_file ../../../data/pCLUE/pCLUE_train.csv \
     --prompt_column input \
     --response_column target \
     --overwrite_cache \
