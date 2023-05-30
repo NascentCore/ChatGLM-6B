@@ -7,7 +7,9 @@ from torch.utils.data import RandomSampler, DataLoader
 from chatglm_model.data_set import Seq2SeqDataSet, coll_fn
 import os
 from shutil import copy
+import wandb
 
+wandb.init(project='chatGLM_6b_freeze')
 
 def print_trainable_parameters(model):
     trainable_params = 0
@@ -48,46 +50,13 @@ def main():
     model = ChatGLMForConditionalGeneration.from_pretrained(args.model_dir).half().cuda()
     tokenizer = ChatGLMTokenizer.from_pretrained(args.model_dir)
     
-    #with open('./config/freeze_cfg.json', 'r') as f:
-    #    data=json.load(f)
-    #conf =json.loads(json.dumps(data).replace('TRUE','True'))
-    #conf["train_micro_batch_size_per_gpu"]=args.train_batch_size
-    #conf["gradient_accumulation_steps"]=args.gradient_accumulation_steps
-    #conf["steps_per_print"]=args.log_steps
-
-    conf = {"train_micro_batch_size_per_gpu": args.train_batch_size,
-            "gradient_accumulation_steps": args.gradient_accumulation_steps,
-            "optimizer": {
-                "type": "Adam",
-                "params": {
-                    "lr": 1e-5,
-                    "betas": [
-                        0.9,
-                        0.95
-                    ],
-                    "eps": 1e-8,
-                    "weight_decay": 5e-4
-                }
-            },
-            "fp16": {
-                "enabled": True
-            },
-            "zero_optimization": {
-                "stage": 1,
-                "offload_optimizer": {
-                    "device": "cpu",
-                    "pin_memory": True
-                },
-                "allgather_partitions": True,
-                "allgather_bucket_size": 2e8,
-                "overlap_comm": True,
-                "reduce_scatter": True,
-                "reduce_bucket_size": 2e8,
-                "contiguous_gradients": True
-            },
-            "steps_per_print": args.log_steps
-            }
-
+    import json
+    with open('./config/freeze_cfg.json', 'r') as f:
+        data=json.load(f)
+    conf =json.loads(json.dumps(data).replace('TRUE','True'))
+    conf["train_micro_batch_size_per_gpu"]=args.train_batch_size
+    conf["gradient_accumulation_steps"]=args.gradient_accumulation_steps
+    conf["steps_per_print"]=args.log_steps
 
     for name, param in model.named_parameters():
         if not any(nd in name for nd in ["layers.27", "layers.26", "layers.25", "layers.24", "layers.23"]):
