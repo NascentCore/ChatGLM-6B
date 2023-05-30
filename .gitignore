@@ -14,6 +14,7 @@ finetuning/data/*
 finetuning/__MACOSX/
 finetuning/output*
 .idea*
+*.swo
 # C extensions
 *.so
 

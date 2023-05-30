@@ -1,7 +1,7 @@
 CUDA_VISIBLE_DEVICES='all'
 FILE_DATE=$(date +%Y-%m-%d-%H)
 TRAIN_EPOCHS=5
-TRSIN_BATCH_SIZE=2
+TRSIN_BATCH_SIZE=10
 
 nohup deepspeed finetuning_freeze.py \
 	--num_train_epochs $TRAIN_EPOCHS \
