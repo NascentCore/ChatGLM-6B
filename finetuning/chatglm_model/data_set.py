@@ -1,8 +1,4 @@
 # -*- coding:utf-8 -*-
-"""
-    文件说明：
-            
-"""
 import json
 import torch
 from torch.nn.utils.rnn import pad_sequence
@@ -11,7 +7,7 @@ from torch.utils.data import Dataset
 
 class Seq2SeqDataSet(Dataset):
     """数据处理函数"""
-    def __init__(self, data_path, tokenizer, max_len, max_src_len, prompt_text):
+    def __init__(self, data_path, tokenizer, max_len, max_src_len, prompt_text, input_column="text",output_column="answer"):
         # prompt_text = "你现在是一个信息抽取模型，请你帮我抽取出关系内容为\"性能故障\", \"部件故障\", \"组成\"和 \"检测工具\"的相关三元组，三元组内部用\"_\"连接，三元组之间用\\n分割。文本："
 
         max_tgt_len = max_len - max_src_len - 3
@@ -19,13 +15,13 @@ class Seq2SeqDataSet(Dataset):
         with open(data_path, "r", encoding="utf-8") as fh:
             for i, line in enumerate(fh):
                 sample = json.loads(line.strip())
-                src_tokens = tokenizer.tokenize(sample["text"])
+                src_tokens = tokenizer.tokenize(sample[input_column])
                 prompt_tokens = tokenizer.tokenize(prompt_text)
 
                 if len(src_tokens) > max_src_len - len(prompt_tokens):
                     src_tokens = src_tokens[:max_src_len - len(prompt_tokens)]
 
-                tgt_tokens = tokenizer.tokenize(sample["answer"])
+                tgt_tokens = tokenizer.tokenize(sample[output_column])
                 if len(tgt_tokens) > max_tgt_len:
                     tgt_tokens = tgt_tokens[:max_tgt_len]
                 tokens = prompt_tokens + src_tokens + ["[gMASK]", "<sop>"] + tgt_tokens + ["<eop>"]
@@ -39,7 +35,7 @@ class Seq2SeqDataSet(Dataset):
                 labels = labels + [-100] * pad_len
 
                 self.all_data.append(
-                    {"text": sample["text"], "answer": sample["answer"], "input_ids": input_ids, "labels": labels})
+                    {"text": sample[input_column], "answer": sample[output_column], "input_ids": input_ids, "labels": labels})
 
     def __len__(self):
         return len(self.all_data)

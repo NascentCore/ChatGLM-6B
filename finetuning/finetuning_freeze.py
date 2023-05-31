@@ -38,9 +38,9 @@ def set_args():
     parser.add_argument('--max_len', type=int, default=768, help='')
     parser.add_argument('--max_src_len', type=int, default=450, help='')
     parser.add_argument('--local_rank', type=int, default=0, help='')
-    parser.add_argument('--prompt_text', type=str,
-                        default="你现在是一个信息抽取模型，请你帮我抽取出关系内容为\"性能故障\", \"部件故障\", \"组成\"和 \"检测工具\"的相关三元组，三元组内部用\"_\"连接，三元组之间用\\n分割。文本：",
-                        help='')
+    parser.add_argument('--prompt_text', type=str,default="你现在是一个信息抽取模型，请你帮我抽取出关系内容为\"性能故障\", \"部件故障\", \"组成\"和 \"检测工具\"的相关三元组，三元组内部用\"_\"连接，三元组之间用\\n分割。文本：",help='')
+    parser.add_argument('--input_column', type=str, default="text", help='训练数据的列')
+    parser.add_argument('--output_column', type=str, default="answer", help='label')
     return parser.parse_args()
 
 
@@ -58,6 +58,7 @@ def main():
     conf["gradient_accumulation_steps"]=args.gradient_accumulation_steps
     conf["steps_per_print"]=args.log_steps
 
+
     for name, param in model.named_parameters():
         if not any(nd in name for nd in ["layers.27", "layers.26", "layers.25", "layers.24", "layers.23"]):
             param.requires_grad = False
@@ -67,7 +68,7 @@ def main():
         if param.requires_grad == True:
             print(name)
 
-    train_dataset = Seq2SeqDataSet(args.train_path, tokenizer, args.max_len, args.max_src_len, args.prompt_text)
+    train_dataset = Seq2SeqDataSet(args.train_path, tokenizer, args.max_len, args.max_src_len, args.prompt_text,args.input_column,args.output_column)
     train_dataloader = DataLoader(train_dataset,
                                   batch_size=conf["train_micro_batch_size_per_gpu"],
                                   sampler=RandomSampler(train_dataset),
