@@ -8,6 +8,8 @@ from chatglm_model.data_set import Seq2SeqDataSet, coll_fn
 import os
 from shutil import copy
 import wandb
+import numpy as np
+from sklearn.metrics import accuracy_score
 
 wandb.init(project='chatGLM_6b_freeze')
 
@@ -81,6 +83,8 @@ def main():
                                                          model_parameters=model.parameters())
     model_engine.train()
     global_step = 0
+    train_loss, train_acc, batch_num = 0, 0, 0
+    
     for i_epoch in range(args.num_train_epochs):
         train_iter = iter(train_dataloader)
         for step, batch in enumerate(train_iter):
@@ -97,6 +101,16 @@ def main():
                 global_step += 1
             if global_step % args.log_steps == 0:
                 print("loss:{}, global_step:{}".format(float(loss.item()), global_step))
+                train_loss += loss.item()
+                #logits = outputs[1].detach().cpu().numpy()
+                #predict = np.argmax(logits, axis=1)
+                #label_ids = labels.detach().cpu().numpy()
+                #train_acc += accuracy_score(label_ids, predict)
+                batch_num += 1
+        
+        print("train loss:{}".format(train_loss/batch_num))
+        # 添加wandb监测
+        wandb.log({"lossN": train_loss/batch_num,"global_step":global_step})
         save_dir = os.path.join(args.output_dir, f"global_step-{global_step}")
         model_engine.save_pretrained(save_dir)
         copy(os.path.join(args.model_dir, "tokenizer_config.json"), os.path.join(save_dir, "tokenizer_config.json"))
